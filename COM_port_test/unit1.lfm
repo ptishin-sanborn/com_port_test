@@ -1,0 +1,229 @@
+object frmMain: TfrmMain
+  Left = 253
+  Height = 874
+  Top = 174
+  Width = 1350
+  Caption = 'Concentrator board test'
+  ClientHeight = 874
+  ClientWidth = 1350
+  DesignTimePPI = 144
+  LCLVersion = '3.4.0.0'
+  object Panel1: TPanel
+    Left = 1040
+    Height = 874
+    Top = 0
+    Width = 310
+    Align = alRight
+    ClientHeight = 874
+    ClientWidth = 310
+    TabOrder = 0
+    object btnOpenClose: TButton
+      Left = 64
+      Height = 38
+      Top = 320
+      Width = 169
+      Caption = 'Open/Close'
+      TabOrder = 0
+      OnClick = btnOpenCloseClick
+    end
+    object leditTotal: TLabeledEdit
+      Left = 40
+      Height = 33
+      Top = 648
+      Width = 225
+      EditLabel.Height = 25
+      EditLabel.Width = 225
+      EditLabel.Caption = 'Received NMEA messages'
+      TabOrder = 1
+    end
+    object leditError: TLabeledEdit
+      Left = 40
+      Height = 33
+      Top = 738
+      Width = 225
+      EditLabel.Height = 25
+      EditLabel.Width = 225
+      EditLabel.Caption = 'Detected errors'
+      TabOrder = 2
+      Text = '$ and D messages'
+    end
+    object Combo1: TComComboBox
+      Left = 130
+      Height = 33
+      Top = 58
+      Width = 150
+      ComPort = ComPort
+      ComProperty = cpPort
+      Style = csDropDownList
+      ItemHeight = 25
+      TabOrder = 3
+    end
+    object Combo2: TComComboBox
+      Left = 130
+      Height = 33
+      Top = 98
+      Width = 150
+      ComPort = ComPort
+      ComProperty = cpBaudRate
+      Text = '115200'
+      Style = csDropDownList
+      ItemHeight = 25
+      ItemIndex = 13
+      TabOrder = 4
+    end
+    object Combo3: TComComboBox
+      Left = 130
+      Height = 33
+      Top = 138
+      Width = 150
+      ComPort = ComPort
+      ComProperty = cpDataBits
+      Text = '8'
+      Style = csDropDownList
+      ItemHeight = 25
+      ItemIndex = 3
+      TabOrder = 5
+    end
+    object Combo4: TComComboBox
+      Left = 130
+      Height = 33
+      Top = 178
+      Width = 150
+      ComPort = ComPort
+      ComProperty = cpStopBits
+      Text = '1'
+      Style = csDropDownList
+      ItemHeight = 25
+      ItemIndex = 0
+      TabOrder = 6
+    end
+    object Combo5: TComComboBox
+      Left = 130
+      Height = 33
+      Top = 218
+      Width = 150
+      ComPort = ComPort
+      ComProperty = cpParity
+      Text = 'None'
+      Style = csDropDownList
+      ItemHeight = 25
+      ItemIndex = 0
+      TabOrder = 7
+    end
+    object Combo6: TComComboBox
+      Left = 130
+      Height = 33
+      Top = 258
+      Width = 150
+      ComPort = ComPort
+      ComProperty = cpFlowControl
+      Text = 'None'
+      Style = csDropDownList
+      ItemHeight = 25
+      ItemIndex = 2
+      TabOrder = 8
+    end
+    object Label1: TLabel
+      Left = 16
+      Height = 25
+      Top = 58
+      Width = 32
+      Caption = 'Port'
+    end
+    object Label2: TLabel
+      Left = 16
+      Height = 25
+      Top = 98
+      Width = 75
+      Caption = 'Baud rate'
+    end
+    object Label3: TLabel
+      Left = 16
+      Height = 25
+      Top = 138
+      Width = 71
+      Caption = 'Data bits'
+    end
+    object Label4: TLabel
+      Left = 16
+      Height = 25
+      Top = 178
+      Width = 71
+      Caption = 'Stop bits'
+    end
+    object Label5: TLabel
+      Left = 16
+      Height = 25
+      Top = 218
+      Width = 43
+      Caption = 'Parity'
+    end
+    object Label6: TLabel
+      Left = 16
+      Height = 25
+      Top = 258
+      Width = 98
+      Caption = 'Flow control'
+    end
+    object chbShow: TCheckBox
+      Left = 40
+      Height = 29
+      Top = 560
+      Width = 177
+      Caption = 'Show All messages'
+      TabOrder = 9
+    end
+    object btnClear: TButton
+      Left = 40
+      Height = 38
+      Top = 504
+      Width = 113
+      Caption = 'Clear'
+      TabOrder = 10
+      OnClick = btnClearClick
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 874
+    Top = 0
+    Width = 1040
+    Align = alClient
+    Caption = 'Panel2'
+    ClientHeight = 874
+    ClientWidth = 1040
+    TabOrder = 1
+    object Memo1: TMemo
+      Left = 4
+      Height = 866
+      Top = 4
+      Width = 1032
+      Align = alClient
+      BorderSpacing.Around = 3
+      Lines.Strings = (
+        'ver. 08/01/2025'
+      )
+      ScrollBars = ssVertical
+      TabOrder = 0
+    end
+  end
+  object ComPort: TComPort
+    BaudRate = br115200
+    Port = 'COM4'
+    Parity.Bits = prNone
+    StopBits = sbOneStopBit
+    DataBits = dbEight
+    Events = [evRxChar, evTxEmpty, evRxFlag, evRing, evBreak, evCTS, evDSR, evError, evRLSD, evRx80Full]
+    FlowControl.OutCTSFlow = False
+    FlowControl.OutDSRFlow = False
+    FlowControl.ControlDTR = dtrDisable
+    FlowControl.ControlRTS = rtsDisable
+    FlowControl.XonXoffOut = False
+    FlowControl.XonXoffIn = False
+    StoredProps = [spBasic]
+    TriggersOnRxChar = True
+    OnRxChar = ComPortRxChar
+    Left = 880
+    Top = 80
+  end
+end
